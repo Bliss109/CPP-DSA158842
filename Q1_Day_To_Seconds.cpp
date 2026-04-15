@@ -56,7 +56,7 @@ int main()
         break;
     }
 
-    // Hanldes zero seperately to avoid unnecessary multiplication
+    // Handles zero separately to avoid unnecessary multiplication
     if (days == 0)
     {
         cout << "0 day(s) is equal to 0 seconds." << endl;
