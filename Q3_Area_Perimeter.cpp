@@ -14,10 +14,10 @@ BEGIN
 
     FUNCTION computeArea(side):
         Return side * side
-    
+
     FUNCTION computePerimeter(side):
         Return 4 * side
-    
+
     area = computeArea(side)
     perimeter = computePerimeter(side)
 
@@ -37,3 +37,68 @@ Edge Cases:
 - Extremely large input values should be considered to avoid overflow issues, although in this case, the
 */
 
+#include <iostream>
+using namespace std;
+
+// Function to compute area of a square
+double computeArea(double side)
+{
+    return side * side;
+}
+
+// Function to compute perimeter of a square
+double computePerimeter(double side)
+{
+    return 4 * side;
+}
+
+int main()
+{
+    double side;
+
+    // Keep prompting until valid input is received
+    while (true)
+    {
+        cout << "Enter the side length of the square: ";
+        cin >> side;
+
+        // Check 1: Was the input a valid number?
+        if (cin.fail())
+        {
+            cin.clear();            // Clear the error flag
+            cin.ignore(1000, '\n'); // Discard bad input from buffer
+            cout << "Error: Invalid input. Please enter a numeric value." << endl;
+            continue;
+        }
+
+        // Check 2: Is the side length negative?
+        if (side < 0)
+        {
+            cout << "Error: Side length cannot be negative. Try again." << endl;
+            continue;
+        }
+
+        // Check 3: Is the side length zero?
+        if (side == 0)
+        {
+            cout << "Error: Side length cannot be zero. Try again." << endl;
+            continue;
+        }
+
+        // Valid input — exit loop
+        break;
+    }
+
+    // Call functions to compute area and perimeter
+    double area = computeArea(side);
+    double perimeter = computePerimeter(side);
+
+    // Display results to 2 decimal places
+    cout << fixed;
+    cout.precision(2);
+    cout << "\nSquare with side length " << side << ":" << endl;
+    cout << "Area      = " << area << " square units" << endl;
+    cout << "Perimeter = " << perimeter << " units" << endl;
+
+    return 0;
+}
